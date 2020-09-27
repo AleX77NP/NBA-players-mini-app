@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct LoadingView: View {
+    var body: some View {
+        Image("logo").resizable()
+            .frame(width: 90, height: 200, alignment: .center)
+    }
+}

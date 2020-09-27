@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var fetcher = PlayersFetcher()
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if(fetcher.loading) {
+            LoadingView()
+        }
+        else {
+            NavigationView{
+                List {
+                    ForEach(fetcher.players)
+                    {
+                        player in
+                        PlayerItem(player: player)
+                    }
+                }.navigationTitle("Players")
+            }
+        }
     }
 }
 
